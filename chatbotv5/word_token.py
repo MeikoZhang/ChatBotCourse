@@ -10,7 +10,6 @@ class WordToken(object):
         self.word2id_dict = {}
         self.id2word_dict = {}
 
-
     def load_file_list(self, file_list, min_freq):
         """
         加载样本文件列表，全部切词后统计词频，按词频由高到低排序后顺次编号
@@ -18,7 +17,7 @@ class WordToken(object):
         """
         words_count = {}
         for file in file_list:
-            with open(file, 'r') as file_object:
+            with open(file, 'r', encoding='utf-8') as file_object:
                 for line in file_object.readlines():
                     line = line.strip()
                     seg_list = jieba.cut(line)
@@ -39,8 +38,8 @@ class WordToken(object):
         return index
 
     def word2id(self, word):
-        if not isinstance(word, unicode):
-            print "Exception: error word not unicode"
+        if not isinstance('s', str):
+            print("Exception: error word not unicode")
             sys.exit(1)
         if word in self.word2id_dict:
             return self.word2id_dict[word]
